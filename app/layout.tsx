@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Open_Sans } from "next/font/google";
+import GlowScrollbar from "./components/scrollbar";
+import BlurOverlay from "./components/blurEffect";
 import "./globals.css";
+import Name from "./components/name";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["300","400","500","600","700","800"]
 });
 
 const geistMono = Geist_Mono({
@@ -27,7 +35,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+          <Name />
+          <GlowScrollbar />
+          {children}
+         
+       
       </body>
     </html>
   );
