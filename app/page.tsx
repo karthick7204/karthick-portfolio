@@ -7,6 +7,7 @@ import AboutSummary from "./about/about-summary";
 import GlowScrollbar from "./components/scrollbar";
 import Skills from "./skills/skills";
 import Feats from "./feats/feats";
+import ProjectList from "./projects/project";
 export default function Home() {
   return (
     <div className='bg-[#010001] '>
@@ -18,9 +19,10 @@ export default function Home() {
        <AboutSummary />
 
       <div className="max-w-3xl mx-auto px-6">
-  <Skills />
-</div>
-
+      <Skills />
+      </div>
+      
+      <ProjectList />
       <Feats />
       
 

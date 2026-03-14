@@ -55,5 +55,5 @@ export default function AboutSummary() {
         </div>
       </div>
     </div>
-  );
+  );    
 }
