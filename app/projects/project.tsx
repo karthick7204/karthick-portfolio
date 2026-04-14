@@ -11,7 +11,7 @@ const projects = [
     tag: "#BackGround Agent",
     href: "#",
     bg: "#0a1a2e",  // deep navy
-    img: "/project1.png",
+    img: "/image.png",
   },
   {
     name: "Project Two",

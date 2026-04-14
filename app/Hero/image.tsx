@@ -9,7 +9,7 @@ export default function ImageComponent() {
       alt="Karthick Raja"
       width={480}
       height={800}
-      className="brightness-60"
+      className="brightness-90"
     />
     </div>
     )

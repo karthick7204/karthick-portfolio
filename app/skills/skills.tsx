@@ -1,185 +1,148 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
+import { 
+  Code2, 
+  Terminal, 
+  Layers, 
+  Wrench, 
+  Database,
+  Cpu,
+  Globe,
+  Layout,
+  Palette,
+  Sparkles
+} from "lucide-react";
 
 const categories = [
   {
-    id: "languages",
-    label: "Languages",
-    skills: [
-      { name: "JavaScript", level: "advanced",   pct: 90 },
-      { name: "TypeScript", level: "proficient",  pct: 80 },
-      { name: "HTML / CSS", level: "advanced",   pct: 95 },
-      { name: "Python",     level: "familiar",   pct: 55 },
-    ],
+    name: "Languages",
+    icon: <Terminal className="w-5 h-5" />,
+    skills: ["JavaScript (ES6+)", "TypeScript", "Python", "HTML5/CSS3"],
+    desc: "The core foundation of my development stack.",
+    className: "md:col-span-2 md:row-span-1 bg-blue-500/5 border-blue-500/20",
+    iconColor: "text-blue-400",
+    glow: "bg-blue-500/20"
   },
   {
-    id: "frameworks",
-    label: "Frameworks",
-    skills: [
-      { name: "React",         level: "advanced",   pct: 90 },
-      { name: "Next.js",       level: "proficient", pct: 85 },
-      { name: "Tailwind CSS",  level: "advanced",   pct: 88 },
-      { name: "Framer Motion", level: "proficient", pct: 70 },
-    ],
+    name: "Frontend",
+    icon: <Layout className="w-5 h-5" />,
+    skills: ["React 19", "Next.js 15", "Tailwind CSS", "Framer Motion", "Three.js"],
+    desc: "Crafting immersive, high-performance user interfaces.",
+    className: "md:col-span-1 md:row-span-2 bg-purple-500/5 border-purple-500/20",
+    iconColor: "text-purple-400",
+    glow: "bg-purple-500/20"
   },
   {
-    id: "backend",
-    label: "Backend",
-    skills: [
-      { name: "Node.js",   level: "proficient", pct: 75 },
-      { name: "Express",   level: "proficient", pct: 70 },
-      { name: "MongoDB",   level: "familiar",   pct: 65 },
-      { name: "REST APIs", level: "proficient", pct: 80 },
-    ],
+    name: "Backend",
+    icon: <Database className="w-5 h-5" />,
+    skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Prisma"],
+    desc: "Building scalable and robust server environments.",
+    className: "md:col-span-1 md:row-span-1 bg-emerald-500/5 border-emerald-500/20",
+    iconColor: "text-emerald-400",
+    glow: "bg-emerald-500/20"
   },
   {
-    id: "tools",
-    label: "Tools",
-    skills: [
-      { name: "Git / GitHub", level: "advanced",   pct: 85 },
-      { name: "VS Code",      level: "advanced",   pct: 95 },
-      { name: "Vercel",       level: "proficient", pct: 78 },
-    ],
+    name: "Design",
+    icon: <Palette className="w-5 h-5" />,
+    skills: ["Figma", "UI/UX Principles", "Responsive Design", "Prototypes"],
+    desc: "Bridging the gap between aesthetics and function.",
+    className: "md:col-span-1 md:row-span-1 bg-orange-500/5 border-orange-500/20",
+    iconColor: "text-orange-400",
+    glow: "bg-orange-500/20"
   },
   {
-    id: "design",
-    label: "Design",
-    skills: [
-      { name: "Figma",   level: "familiar", pct: 68 },
-      { name: "UI / UX", level: "familiar", pct: 60 },
-    ],
-  },
+    name: "Tools & DevOps",
+    icon: <Wrench className="w-5 h-5" />,
+    skills: ["Git", "Docker", "Vercel", "Linux", "Postman"],
+    desc: "Streamlining development and deployment pipelines.",
+    className: "md:col-span-2 md:row-span-1 bg-pink-500/5 border-pink-500/20",
+    iconColor: "text-pink-400",
+    glow: "bg-pink-500/20"
+  }
 ];
 
+const SkillBadge = ({ name }: { name: string }) => (
+  <span className="px-2 py-1 text-[10px] font-medium rounded-md bg-white/5 border border-white/10 text-white/50 hover:text-white hover:border-white/20 transition-all cursor-default">
+    {name}
+  </span>
+);
+
 export default function Skills() {
-  const rightRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState("languages");
-
-  useEffect(() => {
-    const el = rightRef.current;
-    if (!el) return;
-
-  const handleScroll = () => {
-  let current = categories[0].id;
-  categories.forEach(({ id }) => {
-    const section = el.querySelector(`#${id}`) as HTMLElement;
-    if (section && section.offsetTop <= el.scrollTop + 100) current = id;
-  });
-  setActive(current);
-};
-
-    el.addEventListener("scroll", handleScroll);
-    return () => el.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollTo = (id: string) => {
-    const el = rightRef.current;
-    const section = el?.querySelector(`#${id}`) as HTMLElement;
-    if (el && section) el.scrollTo({ top: section.offsetTop - 32, behavior: "smooth" });
-    setActive(id);
-  };
-
   return (
-    <div
-      className="flex h-[460px] overflow-hidden rounded-2xl max-w-3xl mx-auto"
-      style={{ background: "#00000" }}
-    >
-      {/* Left — category nav */}
-      <div className="w-[180px] min-w-[180px] flex flex-col gap-1 p-8">
-        <p className="text-[9px] tracking-[0.25em] text-white/20 uppercase mb-6 pl-3">
-          stack
-        </p>
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => scrollTo(cat.id)}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs tracking-wide transition-all duration-200 text-left"
-            style={{
-              color: active === cat.id ? "white" : "rgba(255,255,255,0.28)",
-              background: active === cat.id ? "rgba(255,255,255,0.06)" : "transparent",
-            }}
+    <section className="py-24 relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.01] rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container px-4 mx-auto max-w-5xl">
+        <div className="flex flex-col items-center mb-16 space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08]"
           >
-            <span
-              className="w-1 h-1 rounded-full flex-shrink-0 transition-all duration-200"
-              style={{
-                background: active === cat.id ? "white" : "rgba(255,255,255,0.15)",
-                boxShadow: active === cat.id
-                  ? "0 0 6px 2px rgba(255,255,255,0.5)"
-                  : "none",
-              }}
-            />
-            {cat.label}
-          </button>
-        ))}
-      </div>
+            <Sparkles className="w-3 h-3 text-white/40" />
+            <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold">Technological Stack</span>
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-center text-white tracking-tight"
+          >
+            Powering Digital <span className="text-white/30 italic font-serif">Experiences</span>
+          </motion.h2>
+        </div>
 
-      {/* Divider */}
-      <div className="w-px" style={{ background: "rgba(255,255,255,0.06)" }} />
-
-      {/* Right — scrollable skills */}
-     <div
-  ref={rightRef}
-  id="skills-right"
-  className="flex-1 overflow-y-scroll p-8"
-  style={{ scrollbarWidth: "none" }}
->
-        <style>{`#skills-right::-webkit-scrollbar { display: none; }`}</style>
-
-        {categories.map((cat) => (
-          <div key={cat.id} id={cat.id} className="mb-11">
-
-            {/* Section header */}
-            <div className="flex items-center gap-3 mb-5">
-              <span className="text-[9px] tracking-[0.22em] text-white/20 uppercase whitespace-nowrap">
-                {cat.label}
-              </span>
-              <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
-            </div>
-
-            {/* Grid */}
-            <div className="grid grid-cols-2 gap-2">
-              {cat.skills.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="group p-4 rounded-xl cursor-default transition-all duration-200"
-                  style={{
-                    border: "0.5px solid rgba(255,255,255,0.06)",
-                    background: "rgba(255,255,255,0.02)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)";
-                    e.currentTarget.style.background = "rgba(255,255,255,0.05)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
-                    e.currentTarget.style.background = "rgba(255,255,255,0.02)";
-                  }}
-                >
-                  <p className="text-sm text-white/60 mb-2 font-medium group-hover:text-white transition-colors duration-200">
-                    {skill.name}
-                  </p>
-                  <div
-                    className="h-0.5 rounded-full"
-                    style={{ background: "rgba(255,255,255,0.06)" }}
-                  >
-                    <div
-                      className="h-full rounded-full"
-                      style={{
-                        width: `${skill.pct}%`,
-                        background:
-                          "linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.5))",
-                      }}
-                    />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {categories.map((cat, i) => (
+            <motion.div
+              key={cat.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
+              viewport={{ once: true }}
+              className={`group relative p-6 rounded-[2rem] border overflow-hidden transition-all duration-500 hover:scale-[1.02] ${cat.className}`}
+            >
+              {/* Glow Effect */}
+              <div className={`absolute -right-10 -top-10 w-32 h-32 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ${cat.glow}`} />
+              
+              <div className="relative z-10 h-full flex flex-col justify-between">
+                <div>
+                  <div className={`p-3 w-fit rounded-2xl bg-white/[0.03] border border-white/5 mb-6 group-hover:scale-110 transition-transform duration-500 ${cat.iconColor}`}>
+                    {cat.icon}
                   </div>
-                  <p className="text-[9px] text-white/20 uppercase tracking-widest mt-1.5">
-                    {skill.level}
+                  <h3 className="text-xl font-bold text-white mb-2">{cat.name}</h3>
+                  <p className="text-sm text-white/40 mb-6 leading-relaxed">
+                    {cat.desc}
                   </p>
                 </div>
-              ))}
-            </div>
-          </div>
-        ))}
+
+                <div className="flex flex-wrap gap-2">
+                  {cat.skills.map((skill) => (
+                    <SkillBadge key={skill} name={skill} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Decorative accent */}
+              <div className="absolute bottom-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity">
+                {React.cloneElement(cat.icon as React.ReactElement<any>, { size: 120, strokeWidth: 1 })}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        
+        {/* Modern Footer Detail */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="mt-16 flex flex-col items-center space-y-4"
+        >
+          <div className="h-px w-32 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          <p className="text-[10px] text-white/20 tracking-[0.3em] uppercase">Continuously Evolving</p>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
-}
+}
