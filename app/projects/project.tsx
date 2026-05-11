@@ -14,13 +14,13 @@ const projects = [
     img: "/image.png",
   },
   {
-    name: "Project Two",
-    desc: "Short description of what this project does.",
-    stats: [{ val: "500+", label: "users" }, { val: "4.9★", label: "rating" }],
-    tag: "#BUILTWITHREACT",
+    name: "AI Assessment Engine",
+    desc: "A modular, AI-driven learning platform for real-time skill tracking.",
+    stats: [{ val: "15k+", label: "questions" }, { val: "200+", label: "modules" }],
+    tag: "#AI #LEARNING",
     href: "#",
     bg: "#1a0a2e",  // deep purple
-    img: "/project1.png",
+    img: "/project2.png",
   },
   {
     name: "Project Three",
