@@ -61,7 +61,7 @@ export default function Skills() {
         </div>
 
         {/* IDE Container */}
-        <div className="w-full rounded-2xl border border-white/10 bg-[#080808] overflow-hidden shadow-2xl flex flex-row h-[550px] md:h-[600px]">
+        <div className="w-full rounded-xl border border-white/10 bg-[#080808] overflow-hidden shadow-2xl flex flex-row h-[550px] md:h-[600px]">
           
           {/* Sidebar - Always on the left */}
           <div className="w-[110px] sm:w-48 md:w-64 border-r border-white/5 bg-[#050505] flex flex-col flex-none">
@@ -80,7 +80,7 @@ export default function Skills() {
                 <button
                   key={cat.id}
                   onClick={() => setActive(cat)}
-                  className={`w-full flex items-center gap-2 md:gap-3 px-2 md:px-3 py-2 rounded-lg text-[10px] md:text-xs font-mono transition-all text-left ${
+                  className={`w-full flex items-center gap-2 md:gap-3 px-2 md:px-3 py-2 rounded-md text-[10px] md:text-xs font-mono transition-all text-left ${
                     active.id === cat.id 
                     ? "bg-white/10 text-white shadow-sm" 
                     : "text-white/30 hover:bg-white/5 hover:text-white/60"

@@ -5,31 +5,31 @@ import Image from "next/image";
 
 const projects = [
   {
-    name: "Project1",
-    desc: "sample data coming from meta verse",
-    stats: [{ val: "1.2M+", label: "visits/month" }, { val: "26K+", label: "users/month" }],
-    tag: "#BackGround Agent",
-    href: "#",
-    bg: "#080808", 
-    img: "/image.png",
+    name: "PatchPilot",
+    desc: "An automated AI code patching and vulnerability remediation system.",
+    stats: [{ val: "98%", label: "accuracy" }, { val: "500+", label: "vulns fixed" }],
+    tag: "#NEXTJS #AI",
+    href: "https://github.com/karthick7204/patchpilot",
+    bg: "#080808",
+    img: "/project3.png",
   },
   {
     name: "AI Assessment Engine",
     desc: "A modular, AI-driven learning platform for real-time skill tracking.",
     stats: [{ val: "15k+", label: "questions" }, { val: "200+", label: "modules" }],
     tag: "#AI #LEARNING",
-    href: "#",
+    href: "https://github.com/karthick7204/ai-assessment",
     bg: "#080808",
     img: "/project2.png",
   },
   {
-    name: "PatchPilot",
-    desc: "An automated AI code patching and vulnerability remediation system.",
-    stats: [{ val: "98%", label: "accuracy" }, { val: "500+", label: "vulns fixed" }],
-    tag: "#NEXTJS #AI",
-    href: "#",
+    name: "Project1",
+    desc: "sample data coming from meta verse",
+    stats: [{ val: "1.2M+", label: "visits/month" }, { val: "26K+", label: "users/month" }],
+    tag: "#BackGround Agent",
+    href: "https://github.com/karthick/project1",
     bg: "#080808",
-    img: "/project3.png",
+    img: "/image.png",
   },
 ];
 
@@ -50,39 +50,48 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
       style={{ y, borderRadius, background: project.bg }}
       className="sticky top-0 w-full h-screen flex items-center justify-center px-12 py-20"
     >
-<div className="flex flex-col px-12 pt-16 pb-8 gap-6">
-  
+      <div className="flex flex-col px-12 pt-16 pb-8 gap-6">
 
 
 
-</div>
 
-      <div className="max-w-5xl w-full">
-        <p className="text-[9px] tracking-[0.2em] text-white/20 uppercase mb-6">{project.tag}</p>
+      </div>
 
-        <div className="relative w-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-[#050505]" style={{ height: "600px" }}>
-          <Image src={project.img} alt={project.name} fill className="object-contain hover:scale-105 transition-transform duration-700" />
-          <div className="absolute inset-0 ring-1 ring-inset ring-white/20 pointer-events-none z-10" />
-
-          <div
-            className="absolute inset-0"
-            style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)" }}
-          />
-
-          <div className="absolute bottom-0 left-0 right-0 p-8 flex items-end justify-between">
-            <div>
-              <h2 className="text-5xl font-black text-white tracking-tight mb-2">{project.name}</h2>
-              <p className="text-sm text-white/50">{project.desc}</p>
-            </div>
-            <div className="flex gap-12 items-end">
-              {project.stats.map((s) => (
-                <div key={s.label} className="text-right">
-                  <p className="text-4xl font-black text-white tracking-tight">{s.val}</p>
-                  <p className="text-xs text-white/30 mt-1">{s.label}</p>
-                </div>
-              ))}
-            </div>
+      <div className="max-w-5xl w-full px-6 md:px-0">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
+          <div>
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-2">{project.name}</h2>
           </div>
+          <div className="flex gap-8 md:gap-12">
+            {project.stats.map((s) => (
+              <div key={s.label}>
+                <p className="text-2xl md:text-4xl font-black text-white tracking-tight">{s.val}</p>
+                <p className="text-[10px] text-white/20 mt-1 uppercase tracking-widest">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative w-full rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#080808]" style={{ height: "550px" }}>
+          <Image src={project.img} alt={project.name} fill className="object-cover object-top hover:scale-105 transition-transform duration-1000" />
+
+          {/* Bottom Overlay with Explanation and Link */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex items-end justify-between z-20 bg-gradient-to-t from-black via-black/60 to-transparent">
+            <div className="max-w-md">
+              <p className="text-[10px] tracking-[0.2em] text-white/60 uppercase mb-1">{project.tag}</p>
+              <p className="text-sm text-white leading-relaxed italic font-medium">{project.desc}</p>
+            </div>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-white font-bold tracking-widest uppercase transition-all"
+            >
+              View Project ↗
+            </a>
+          </div>
+
+          <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none z-10" />
         </div>
       </div>
     </motion.div>

@@ -2,10 +2,10 @@
 import { useEffect, useRef, useState } from "react";
 
 const feats = [
-  { platform: "LeetCode",      num: 280, suffix: "+", desc: "problems solved",  tag: "Easy · Medium · Hard", href: "https://leetcode.com/u/yourname" },
-  { platform: "GeeksForGeeks", num: 180, suffix: "+", desc: "problems solved",  tag: "Top 10% institute",     href: "https://geeksforgeeks.org/user/yourname" },
-  { platform: "GitHub",        num: 40,  suffix: "+", desc: "repositories",     tag: "300+ contributions",    href: "https://github.com/yourname" },
-  { platform: "Projects",      num: 12,  suffix: "",  desc: "shipped projects", tag: "Real world apps",       href: "#projects" },
+  { platform: "LeetCode", num: 280, suffix: "+", desc: "problems solved", tag: "Easy · Medium · Hard", href: "https://leetcode.com/u/yourname" },
+  { platform: "GeeksForGeeks", num: 180, suffix: "+", desc: "problems solved", tag: "Top 10% institute", href: "https://geeksforgeeks.org/user/yourname" },
+  { platform: "GitHub", num: 40, suffix: "+", desc: "repositories", tag: "300+ contributions", href: "https://github.com/yourname" },
+  { platform: "Projects", num: 12, suffix: "", desc: "shipped projects", tag: "Real world apps", href: "#projects" },
 ];
 
 interface Feat {
@@ -86,7 +86,7 @@ function FeatCard({ feat, delay }: { feat: Feat; delay: number }) {
       href={feat.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative p-7 rounded-xl cursor-pointer transition-all duration-300 block"
+      className="group relative p-10 rounded-lg cursor-pointer transition-all duration-300 block"
       style={{
         border: "0.5px solid rgba(255,255,255,0.06)",
         background: "rgba(255,255,255,0.02)",
@@ -115,7 +115,7 @@ function FeatCard({ feat, delay }: { feat: Feat; delay: number }) {
       <p className="text-xs text-white/30 mt-2.5">{feat.desc}</p>
 
       <span
-        className="inline-block mt-4 text-[9px] px-2.5 py-1 rounded-full text-white/25 tracking-wider"
+        className="inline-block mt-4 text-[9px] px-2.5 py-1 rounded-md text-white/25 tracking-wider"
         style={{ border: "0.5px solid rgba(255,255,255,0.1)" }}
       >
         {feat.tag}
@@ -126,9 +126,9 @@ function FeatCard({ feat, delay }: { feat: Feat; delay: number }) {
 
 export default function Feats() {
   return (
-    <section className="py-20 max-w-5xl mx-auto px-6">
+    <section className="py-40 max-w-7xl mx-auto px-6">
       <p className="text-[9px] tracking-[0.25em] text-white/20 uppercase mb-7">feats</p>
-      <div className="grid grid-cols-2 gap-2.5">
+      <div className="grid grid-cols-2 gap-8">
         {feats.map((f, i) => (
           <FeatCard key={f.platform} feat={f} delay={i * 150} />
         ))}
