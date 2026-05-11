@@ -18,7 +18,7 @@ export default function Home() {
 
        <AboutSummary />
 
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
       <Skills />
       </div>
       

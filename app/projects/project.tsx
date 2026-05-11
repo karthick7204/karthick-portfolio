@@ -42,7 +42,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
-  const borderRadius = useTransform(scrollYProgress, [0, 1], ["24px", "0px"]);
+  const borderRadius = useTransform(scrollYProgress, [0, 1], ["0px", "0px"]);
 
   return (
     <motion.div
@@ -98,7 +98,7 @@ export default function ProjectList() {
   });
 
   const sectionY = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
-  const sectionRadius = useTransform(scrollYProgress, [0, 1], ["32px", "0px"]);
+  const sectionRadius = useTransform(scrollYProgress, [0, 1], ["0px", "0px"]);
 
   return (
     <div ref={sectionRef} style={{ minHeight: `${projects.length * 100}vh`, background: "#020202" }}>

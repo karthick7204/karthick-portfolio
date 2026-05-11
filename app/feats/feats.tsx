@@ -126,7 +126,7 @@ function FeatCard({ feat, delay }: { feat: Feat; delay: number }) {
 
 export default function Feats() {
   return (
-    <section className="py-20 max-w-3xl mx-auto px-6">
+    <section className="py-20 max-w-5xl mx-auto px-6">
       <p className="text-[9px] tracking-[0.25em] text-white/20 uppercase mb-7">feats</p>
       <div className="grid grid-cols-2 gap-2.5">
         {feats.map((f, i) => (
