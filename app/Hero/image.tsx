@@ -9,7 +9,7 @@ export default function ImageComponent() {
       alt="Karthick Raja"
       width={480}
       height={800}
-      className="brightness-90"
+      className="brightness-90 blur-[0.4px] hover:blur-0 transition-all duration-500 smooth-mask"
     />
     </div>
     )

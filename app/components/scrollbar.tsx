@@ -2,10 +2,6 @@
 import { useEffect, useRef } from "react";
 
 export default function GlowScrollbar() {
-  const dotLeftRef = useRef<HTMLDivElement>(null);
-  const trailLeftRef = useRef<HTMLDivElement>(null);
-  const trackLeftRef = useRef<HTMLDivElement>(null);
-
   const dotRightRef = useRef<HTMLDivElement>(null);
   const trailRightRef = useRef<HTMLDivElement>(null);
   const trackRightRef = useRef<HTMLDivElement>(null);
@@ -15,15 +11,14 @@ export default function GlowScrollbar() {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
-      [
-        { track: trackLeftRef.current, dot: dotLeftRef.current, trail: trailLeftRef.current },
-        { track: trackRightRef.current, dot: dotRightRef.current, trail: trailRightRef.current },
-      ].forEach(({ track, dot, trail }) => {
-        if (!track || !dot || !trail) return;
-        const dotY = ratio * (track.clientHeight - 6);
-        dot.style.top = `${dotY}px`;
-        trail.style.height = `${dotY + 6}px`;
-      });
+      const track = trackRightRef.current;
+      const dot = dotRightRef.current;
+      const trail = trailRightRef.current;
+
+      if (!track || !dot || !trail) return;
+      const dotY = ratio * (track.clientHeight - 6);
+      dot.style.top = `${dotY}px`;
+      trail.style.height = `${dotY + 6}px`;
     };
 
     window.addEventListener("scroll", update);
@@ -80,7 +75,6 @@ export default function GlowScrollbar() {
         html::-webkit-scrollbar { display: none; }
       `}</style>
 
-      <Track trackRef={trackLeftRef} dotRef={dotLeftRef} trailRef={trailLeftRef} side="left" />
       <Track trackRef={trackRightRef} dotRef={dotRightRef} trailRef={trailRightRef} side="right" />
     </>
   );

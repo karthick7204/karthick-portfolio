@@ -1,147 +1,164 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Code2, 
   Terminal, 
-  Layers, 
-  Wrench, 
-  Database,
-  Cpu,
-  Globe,
-  Layout,
-  Palette,
-  Sparkles
+  Layout, 
+  Database, 
+  Palette, 
+  Wrench,
+  Hash,
+  X
 } from "lucide-react";
 
 const categories = [
   {
-    name: "Languages",
-    icon: <Terminal className="w-5 h-5" />,
-    skills: ["JavaScript (ES6+)", "TypeScript", "Python", "HTML5/CSS3"],
-    desc: "The core foundation of my development stack.",
-    className: "md:col-span-2 md:row-span-1 bg-blue-500/5 border-blue-500/20",
-    iconColor: "text-blue-400",
-    glow: "bg-blue-500/20"
+    id: "languages",
+    name: "languages.json",
+    icon: <Terminal className="w-4 h-4 text-blue-400" />,
+    skills: ["JavaScript (ES6+)", "TypeScript", "Python", "HTML5", "CSS3", "C++"],
+    desc: "// The core foundations of my stack"
   },
   {
-    name: "Frontend",
-    icon: <Layout className="w-5 h-5" />,
+    id: "frontend",
+    name: "frontend.ts",
+    icon: <Layout className="w-4 h-4 text-purple-400" />,
     skills: ["React 19", "Next.js 15", "Tailwind CSS", "Framer Motion", "Three.js"],
-    desc: "Crafting immersive, high-performance user interfaces.",
-    className: "md:col-span-1 md:row-span-2 bg-purple-500/5 border-purple-500/20",
-    iconColor: "text-purple-400",
-    glow: "bg-purple-500/20"
+    desc: "// Crafting immersive user experiences"
   },
   {
-    name: "Backend",
-    icon: <Database className="w-5 h-5" />,
+    id: "backend",
+    name: "backend.py",
+    icon: <Database className="w-4 h-4 text-emerald-400" />,
     skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Prisma"],
-    desc: "Building scalable and robust server environments.",
-    className: "md:col-span-1 md:row-span-1 bg-emerald-500/5 border-emerald-500/20",
-    iconColor: "text-emerald-400",
-    glow: "bg-emerald-500/20"
+    desc: "// Building scalable server architectures"
   },
   {
-    name: "Design",
-    icon: <Palette className="w-5 h-5" />,
-    skills: ["Figma", "UI/UX Principles", "Responsive Design", "Prototypes"],
-    desc: "Bridging the gap between aesthetics and function.",
-    className: "md:col-span-1 md:row-span-1 bg-orange-500/5 border-orange-500/20",
-    iconColor: "text-orange-400",
-    glow: "bg-orange-500/20"
+    id: "design",
+    name: "design.fig",
+    icon: <Palette className="w-4 h-4 text-orange-400" />,
+    skills: ["Figma", "UI/UX Design", "Prototyping", "Motion Graphics"],
+    desc: "// Bridging aesthetics and function"
   },
   {
-    name: "Tools & DevOps",
-    icon: <Wrench className="w-5 h-5" />,
-    skills: ["Git", "Docker", "Vercel", "Linux", "Postman"],
-    desc: "Streamlining development and deployment pipelines.",
-    className: "md:col-span-2 md:row-span-1 bg-pink-500/5 border-pink-500/20",
-    iconColor: "text-pink-400",
-    glow: "bg-pink-500/20"
+    id: "tools",
+    name: "devops.yml",
+    icon: <Wrench className="w-4 h-4 text-pink-400" />,
+    skills: ["Git", "Docker", "Vercel", "Linux", "Postman", "CI/CD"],
+    desc: "// Streamlining the shipping process"
   }
 ];
 
-const SkillBadge = ({ name }: { name: string }) => (
-  <span className="px-2 py-1 text-[10px] font-medium rounded-md bg-white/5 border border-white/10 text-white/50 hover:text-white hover:border-white/20 transition-all cursor-default">
-    {name}
-  </span>
-);
-
 export default function Skills() {
+  const [active, setActive] = useState(categories[0]);
+
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.01] rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="container px-4 mx-auto max-w-5xl">
-        <div className="flex flex-col items-center mb-16 space-y-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08]"
-          >
-            <Sparkles className="w-3 h-3 text-white/40" />
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-bold">Technological Stack</span>
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-center text-white tracking-tight"
-          >
-            Powering Digital <span className="text-white/30 italic font-serif">Experiences</span>
-          </motion.h2>
+    <section className="py-20 md:py-32 relative bg-[#010101]">
+      <div className="container px-4 md:px-6 mx-auto max-w-5xl">
+        <div className="flex flex-col items-center mb-12 md:mb-16 text-center">
+           <p className="text-[10px] tracking-[0.4em] text-white/20 uppercase mb-4">Technical Environment</p>
+           <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Skillset Console</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {categories.map((cat, i) => (
-            <motion.div
-              key={cat.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
-              viewport={{ once: true }}
-              className={`group relative p-6 rounded-[2rem] border overflow-hidden transition-all duration-500 hover:scale-[1.02] ${cat.className}`}
-            >
-              {/* Glow Effect */}
-              <div className={`absolute -right-10 -top-10 w-32 h-32 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ${cat.glow}`} />
-              
-              <div className="relative z-10 h-full flex flex-col justify-between">
-                <div>
-                  <div className={`p-3 w-fit rounded-2xl bg-white/[0.03] border border-white/5 mb-6 group-hover:scale-110 transition-transform duration-500 ${cat.iconColor}`}>
-                    {cat.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{cat.name}</h3>
-                  <p className="text-sm text-white/40 mb-6 leading-relaxed">
-                    {cat.desc}
+        {/* IDE Container */}
+        <div className="w-full rounded-2xl border border-white/10 bg-[#080808] overflow-hidden shadow-2xl flex flex-row h-[550px] md:h-[600px]">
+          
+          {/* Sidebar - Always on the left */}
+          <div className="w-[110px] sm:w-48 md:w-64 border-r border-white/5 bg-[#050505] flex flex-col flex-none">
+            {/* Window Controls - Now on all screens */}
+            <div className="flex items-center gap-1.5 md:gap-2 p-3 md:p-4 pb-2 opacity-40">
+              <span className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-red-500/50" />
+              <span className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-yellow-500/50" />
+              <span className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-green-500/50" />
+            </div>
+            
+            <div className="hidden sm:block px-4 py-2 text-[10px] font-mono uppercase tracking-widest text-white/20 mb-2">Explorer</div>
+
+            {/* Navigation - Vertical list */}
+            <div className="flex flex-col overflow-y-auto no-scrollbar p-2 md:p-3 gap-1">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActive(cat)}
+                  className={`w-full flex items-center gap-2 md:gap-3 px-2 md:px-3 py-2 rounded-lg text-[10px] md:text-xs font-mono transition-all text-left ${
+                    active.id === cat.id 
+                    ? "bg-white/10 text-white shadow-sm" 
+                    : "text-white/30 hover:bg-white/5 hover:text-white/60"
+                  }`}
+                >
+                  <span className="flex-none">{cat.icon}</span>
+                  <span className="truncate">{cat.name}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-auto p-4 opacity-20 hidden md:block">
+               <div className="h-px bg-white/10 mb-4" />
+               <p className="text-[9px] font-mono">v2.0.4 - STABLE</p>
+            </div>
+          </div>
+
+          {/* Main Content Area */}
+          <div className="flex-1 flex flex-col bg-[#080808] overflow-hidden">
+            {/* Tab Bar - Visible on all screens for that IDE look */}
+            <div className="flex h-10 bg-[#050505] items-center px-2 md:px-4 gap-2 border-b border-white/5 overflow-x-auto no-scrollbar">
+               <div className="flex items-center gap-2 bg-[#080808] border-x border-t border-white/10 px-3 md:px-4 py-2 rounded-t-md text-[9px] md:text-[10px] font-mono text-white/80 -mb-[1px] whitespace-nowrap">
+                  {active.icon}
+                  {active.name}
+                  <X className="w-3 h-3 ml-2 opacity-30 hover:opacity-100 cursor-pointer" />
+               </div>
+            </div>
+
+            {/* Editor Content */}
+            <div className="flex-1 p-4 md:p-10 font-mono overflow-y-auto custom-scrollbar">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.id}
+                  initial={{ opacity: 0, x: 5 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -5 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <p className="text-white/30 text-[9px] md:text-xs mb-6 md:mb-8 italic">
+                    {active.desc}
                   </p>
-                </div>
+                  
+                  <div className="space-y-3 md:space-y-3">
+                    {active.skills.map((skill, i) => (
+                      <div key={skill} className="flex items-center gap-3 md:gap-4 group">
+                        <span className="text-white/10 text-[8px] md:text-[10px] w-4 md:w-8 flex-none text-right">{i + 1}</span>
+                        <div className="flex items-center gap-2">
+                           <Hash className="w-3 h-3 text-white/20 group-hover:text-blue-500/50 transition-colors flex-none" />
+                           <span className="text-[11px] md:text-base text-white/70 group-hover:text-white transition-colors tracking-tight line-clamp-1">
+                              {skill}
+                           </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill) => (
-                    <SkillBadge key={skill} name={skill} />
-                  ))}
-                </div>
-              </div>
-
-              {/* Decorative accent */}
-              <div className="absolute bottom-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity">
-                {React.cloneElement(cat.icon as React.ReactElement<any>, { size: 120, strokeWidth: 1 })}
-              </div>
-            </motion.div>
-          ))}
+                  <motion.div 
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.2, duration: 0.4 }}
+                    className="mt-10 md:mt-16 h-px w-full bg-gradient-to-r from-white/10 to-transparent" 
+                  />
+                  
+                  <div className="mt-6 md:mt-8 flex flex-wrap gap-4 md:gap-8">
+                     <div>
+                        <p className="text-[7px] md:text-[9px] uppercase tracking-widest text-white/20 mb-1">Status</p>
+                        <p className="text-[8px] md:text-[10px] text-green-500/70 uppercase font-bold tracking-widest">Mastered</p>
+                     </div>
+                     <div>
+                        <p className="text-[7px] md:text-[9px] uppercase tracking-widest text-white/20 mb-1">Coverage</p>
+                        <p className="text-[8px] md:text-[10px] text-white/50 uppercase font-bold tracking-widest">95%</p>
+                     </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
-        
-        {/* Modern Footer Detail */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="mt-16 flex flex-col items-center space-y-4"
-        >
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          <p className="text-[10px] text-white/20 tracking-[0.3em] uppercase">Continuously Evolving</p>
-        </motion.div>
       </div>
     </section>
   );
