@@ -60,8 +60,8 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
       <div className="max-w-5xl w-full">
         <p className="text-[9px] tracking-[0.2em] text-white/20 uppercase mb-6">{project.tag}</p>
 
-        <div className="relative w-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl" style={{ height: "600px" }}>
-          <Image src={project.img} alt={project.name} fill className="object-cover object-top hover:scale-105 transition-transform duration-700" />
+        <div className="relative w-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-[#050505]" style={{ height: "600px" }}>
+          <Image src={project.img} alt={project.name} fill className="object-contain hover:scale-105 transition-transform duration-700" />
           <div className="absolute inset-0 ring-1 ring-inset ring-white/20 pointer-events-none z-10" />
 
           <div
