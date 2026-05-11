@@ -101,7 +101,7 @@ export default function ProjectList() {
   const sectionRadius = useTransform(scrollYProgress, [0, 1], ["32px", "0px"]);
 
   return (
-    <div ref={sectionRef} style={{ minHeight: `${projects.length * 100}vh` }}>
+    <div ref={sectionRef} style={{ minHeight: `${projects.length * 100}vh`, background: "#020202" }}>
 
       {/* Heading — sits above, animates on scroll */}
       <div className="flex flex-col items-center justify-center text-center px-12 py-32 gap-4 ">

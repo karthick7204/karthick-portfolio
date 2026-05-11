@@ -10,7 +10,7 @@ import Feats from "./feats/feats";
 import ProjectList from "./projects/project";
 export default function Home() {
   return (
-    <div className='bg-[#010001] '>
+    <div className='bg-[#020202] min-h-screen'>
        
        <Title />
        <ImageComponent />
