@@ -10,7 +10,7 @@ const projects = [
     stats: [{ val: "1.2M+", label: "visits/month" }, { val: "26K+", label: "users/month" }],
     tag: "#BackGround Agent",
     href: "#",
-    bg: "#0a1a2e",  // deep navy
+    bg: "#080808", 
     img: "/image.png",
   },
   {
@@ -19,7 +19,7 @@ const projects = [
     stats: [{ val: "15k+", label: "questions" }, { val: "200+", label: "modules" }],
     tag: "#AI #LEARNING",
     href: "#",
-    bg: "#1a0a2e",  // deep purple
+    bg: "#080808",
     img: "/project2.png",
   },
   {
@@ -28,7 +28,7 @@ const projects = [
     stats: [{ val: "10K+", label: "requests/day" }, { val: "99%", label: "uptime" }],
     tag: "#NEXTJS",
     href: "#",
-    bg: "#0a2e1a",  // deep forest green
+    bg: "#080808",
     img: "/project1.png",
   },
 ];
@@ -133,7 +133,7 @@ export default function ProjectList() {
           borderRadius: sectionRadius,
           position: "sticky",
           top: 0,
-          background: "#0f0e0f",
+          background: "#020202",
         }}
         className="w-full overflow-hidden"
       >
