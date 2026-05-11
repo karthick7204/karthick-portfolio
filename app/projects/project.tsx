@@ -23,13 +23,13 @@ const projects = [
     img: "/project2.png",
   },
   {
-    name: "Project Three",
-    desc: "Another project you built from scratch.",
-    stats: [{ val: "10K+", label: "requests/day" }, { val: "99%", label: "uptime" }],
-    tag: "#NEXTJS",
+    name: "PatchPilot",
+    desc: "An automated AI code patching and vulnerability remediation system.",
+    stats: [{ val: "98%", label: "accuracy" }, { val: "500+", label: "vulns fixed" }],
+    tag: "#NEXTJS #AI",
     href: "#",
     bg: "#080808",
-    img: "/project1.png",
+    img: "/project3.png",
   },
 ];
 
