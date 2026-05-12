@@ -19,7 +19,10 @@ export default function Home() {
       </div>
       
       <ProjectList />
-      <Feats />
+
+      <div className="max-w-7xl mx-auto px-6">
+        <Feats />
+      </div>
       
     </div>
   );

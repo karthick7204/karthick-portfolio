@@ -126,13 +126,28 @@ function FeatCard({ feat, delay }: { feat: Feat; delay: number }) {
 
 export default function Feats() {
   return (
-    <section className="py-40 max-w-7xl mx-auto px-6">
-      <p className="text-[9px] tracking-[0.25em] text-white/20 uppercase mb-7">feats</p>
-      <div className="grid grid-cols-2 gap-8">
-        {feats.map((f, i) => (
-          <FeatCard key={f.platform} feat={f} delay={i * 150} />
-        ))}
+    <section className="py-32">
+      <div className="relative w-full rounded-[2rem] md:rounded-[2.5rem] border border-white/10 bg-[#080808]/40 backdrop-blur-xl overflow-hidden shadow-2xl">
+        {/* Window Top Bar */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-white/[0.02]">
+          <div className="flex gap-2">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500/30" />
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/30" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500/20 border border-green-500/30" />
+          </div>
+          <p className="text-[9px] tracking-[0.25em] text-white/20 uppercase">achievements.log</p>
+          <div className="w-10" /> {/* Spacer */}
+        </div>
+
+        {/* Content Area */}
+        <div className="p-8 md:p-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+            {feats.map((f, i) => (
+              <FeatCard key={f.platform} feat={f} delay={i * 150} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
-}
+}

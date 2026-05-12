@@ -7,7 +7,6 @@ const projects = [
   {
     name: "PatchPilot",
     desc: "An automated AI code patching and vulnerability remediation system.",
-    stats: [{ val: "98%", label: "accuracy" }, { val: "500+", label: "vulns fixed" }],
     tag: "#NEXTJS #AI",
     href: "https://github.com/karthick7204/patchpilot",
     bg: "#080808",
@@ -16,7 +15,6 @@ const projects = [
   {
     name: "AI Assessment Engine",
     desc: "A modular, AI-driven learning platform for real-time skill tracking.",
-    stats: [{ val: "15k+", label: "questions" }, { val: "200+", label: "modules" }],
     tag: "#AI #LEARNING",
     href: "https://github.com/karthick7204/ai-assessment",
     bg: "#080808",
@@ -25,7 +23,6 @@ const projects = [
   {
     name: "Project1",
     desc: "sample data coming from meta verse",
-    stats: [{ val: "1.2M+", label: "visits/month" }, { val: "26K+", label: "users/month" }],
     tag: "#BackGround Agent",
     href: "https://github.com/karthick/project1",
     bg: "#080808",
@@ -54,14 +51,6 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 md:mb-8 gap-4 md:gap-6">
           <div>
             <h2 className="text-3xl md:text-6xl font-black text-white tracking-tight mb-1 md:mb-2">{project.name}</h2>
-          </div>
-          <div className="flex gap-6 md:gap-12">
-            {project.stats.map((s) => (
-              <div key={s.label}>
-                <p className="text-xl md:text-4xl font-black text-white tracking-tight">{s.val}</p>
-                <p className="text-[8px] md:text-[10px] text-white/20 mt-1 uppercase tracking-widest">{s.label}</p>
-              </div>
-            ))}
           </div>
         </div>
 
