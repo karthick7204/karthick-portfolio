@@ -48,44 +48,37 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
     <motion.div
       ref={cardRef}
       style={{ y, borderRadius, background: project.bg }}
-      className="sticky top-0 w-full h-screen flex items-center justify-center px-12 py-20"
+      className="sticky top-0 w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-12 py-10 md:py-20"
     >
-      <div className="flex flex-col px-12 pt-16 pb-8 gap-6">
-
-
-
-
-      </div>
-
-      <div className="max-w-5xl w-full px-6 md:px-0">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
+      <div className="flex flex-col px-4 md:px-12 pt-10 md:pt-16 pb-8 gap-6 w-full max-w-5xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 md:mb-8 gap-4 md:gap-6">
           <div>
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-2">{project.name}</h2>
+            <h2 className="text-3xl md:text-6xl font-black text-white tracking-tight mb-1 md:mb-2">{project.name}</h2>
           </div>
-          <div className="flex gap-8 md:gap-12">
+          <div className="flex gap-6 md:gap-12">
             {project.stats.map((s) => (
               <div key={s.label}>
-                <p className="text-2xl md:text-4xl font-black text-white tracking-tight">{s.val}</p>
-                <p className="text-[10px] text-white/20 mt-1 uppercase tracking-widest">{s.label}</p>
+                <p className="text-xl md:text-4xl font-black text-white tracking-tight">{s.val}</p>
+                <p className="text-[8px] md:text-[10px] text-white/20 mt-1 uppercase tracking-widest">{s.label}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="relative w-full rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#080808]" style={{ height: "550px" }}>
+        <div className="relative w-full rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#080808] h-[300px] sm:h-[400px] md:h-[550px]">
           <Image src={project.img} alt={project.name} fill className="object-cover object-top hover:scale-105 transition-transform duration-1000" />
 
           {/* Bottom Overlay with Explanation and Link */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex items-end justify-between z-20 bg-gradient-to-t from-black via-black/60 to-transparent">
+          <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 flex flex-col sm:flex-row sm:items-end justify-between z-20 bg-gradient-to-t from-black via-black/80 to-transparent gap-4">
             <div className="max-w-md">
-              <p className="text-[10px] tracking-[0.2em] text-white/60 uppercase mb-1">{project.tag}</p>
-              <p className="text-sm text-white leading-relaxed italic font-medium">{project.desc}</p>
+              <p className="text-[8px] md:text-[10px] tracking-[0.2em] text-white/60 uppercase mb-1">{project.tag}</p>
+              <p className="text-xs md:text-sm text-white leading-relaxed italic font-medium">{project.desc}</p>
             </div>
             <a
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-white font-bold tracking-widest uppercase transition-all"
+              className="w-fit px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 rounded-full text-[8px] md:text-[10px] text-white font-bold tracking-widest uppercase transition-all"
             >
               View Project ↗
             </a>
@@ -113,13 +106,13 @@ export default function ProjectList() {
     <div ref={sectionRef} style={{ minHeight: `${projects.length * 100}vh`, background: "#020202" }}>
 
       {/* Heading — sits above, animates on scroll */}
-      <div className="flex flex-col items-center justify-center text-center px-12 py-32 gap-4 ">
+      <div className="flex flex-col items-center justify-center text-center px-6 md:px-12 py-20 md:py-32 gap-4 ">
         <motion.h2
           initial={{ y: 60, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: false, margin: "0px 0px -80px 0px" }}
           transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-          className="text-6xl font-black tracking-tight text-white"
+          className="text-4xl md:text-6xl font-black tracking-tight text-white"
         >
           What i did so far?
         </motion.h2>
@@ -129,7 +122,7 @@ export default function ProjectList() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: false, margin: "0px 0px -80px 0px" }}
           transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1], delay: 0.15 }}
-          className="text-sm text-white/30"
+          className="text-xs md:text-sm text-white/30"
         >
           You gotta see what my 2 years of experience got me so far.
         </motion.p>
@@ -146,7 +139,7 @@ export default function ProjectList() {
         }}
         className="w-full overflow-hidden"
       >
-        <div className="flex items-center gap-3 px-12 py-8">
+        <div className="flex items-center gap-3 px-6 md:px-12 py-6 md:py-8">
           <span className="text-[9px] tracking-[0.25em] text-white/20 uppercase">projects</span>
           <div className="flex-1 h-px bg-white/5" />
         </div>

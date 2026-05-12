@@ -1,7 +1,6 @@
 import Navbar from "./components/Navbar";
 import HeroFrame from "./components/HeroFrame";
 import AboutSummary from "./about/about-summary";
-import GlowScrollbar from "./components/scrollbar";
 import Skills from "./skills/skills";
 import Feats from "./feats/feats";
 import ProjectList from "./projects/project";
