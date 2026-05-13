@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const feats = [
-  { platform: "LeetCode", num: 280, suffix: "+", desc: "problems solved", tag: "Easy · Medium · Hard", href: "https://leetcode.com/u/yourname" },
+  { platform: "LeetCode", num: 280, suffix: "+", desc: "problems solved", tag: "Easy · Medium · Hard", href: "https://leetcode.com/u/karthick7204/" },
   { platform: "GeeksForGeeks", num: 180, suffix: "+", desc: "problems solved", tag: "Top 10% institute", href: "https://geeksforgeeks.org/user/yourname" },
-  { platform: "GitHub", num: 40, suffix: "+", desc: "repositories", tag: "300+ contributions", href: "https://github.com/yourname" },
+  { platform: "GitHub", num: 40, suffix: "+", desc: "repositories", tag: "300+ contributions", href: "https://github.com/karthick7204" },
   { platform: "Projects", num: 12, suffix: "", desc: "shipped projects", tag: "Real world apps", href: "#projects" },
 ];
 
@@ -86,7 +86,7 @@ function FeatCard({ feat, delay }: { feat: Feat; delay: number }) {
       href={feat.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative p-10 rounded-lg cursor-pointer transition-all duration-300 block"
+      className="group relative p-6 md:p-8 rounded-lg cursor-pointer transition-all duration-300 block"
       style={{
         border: "0.5px solid rgba(255,255,255,0.06)",
         background: "rgba(255,255,255,0.02)",
@@ -106,7 +106,7 @@ function FeatCard({ feat, delay }: { feat: Feat; delay: number }) {
       <p className="text-[9px] tracking-[0.2em] text-white/20 uppercase mb-4">{feat.platform}</p>
 
       <p
-        className="text-6xl font-black text-white leading-none tracking-tight"
+        className="text-4xl md:text-5xl font-black text-white leading-none tracking-tight"
         style={{ textShadow: "0 0 40px rgba(255,255,255,0.15)" }}
       >
         {val}{done ? feat.suffix : ""}
@@ -126,7 +126,7 @@ function FeatCard({ feat, delay }: { feat: Feat; delay: number }) {
 
 export default function Feats() {
   return (
-    <section className="py-32">
+    <section className="py-20 md:py-24">
       <div className="relative w-full rounded-[2rem] md:rounded-[2.5rem] border border-white/10 bg-[#080808]/40 backdrop-blur-xl overflow-hidden shadow-2xl">
         {/* Window Top Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-white/[0.02]">
@@ -140,7 +140,7 @@ export default function Feats() {
         </div>
 
         {/* Content Area */}
-        <div className="p-8 md:p-16">
+        <div className="p-6 md:p-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             {feats.map((f, i) => (
               <FeatCard key={f.platform} feat={f} delay={i * 150} />

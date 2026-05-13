@@ -4,7 +4,7 @@ export default function Resume() {
   return (
   
       <a
-        href="https://fonts.google.com/selection/embed"
+        href="https://drive.google.com/file/d/1cjAuGr1ktIdoJdZy5iTU9iAazcuKXNg7/view?usp=drivesdk"
         target="_blank"
         rel="noreferrer"
         className="absolute right-96 top-1/9 translate-y-96 group flex items-center gap-2"

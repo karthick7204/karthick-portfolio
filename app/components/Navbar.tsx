@@ -16,10 +16,13 @@ export default function Navbar() {
 
       {/* Right: Links */}
       <div className="flex items-center gap-8">
-        <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-xs font-medium text-white/60 hover:text-white transition-all">
+        <a href="https://github.com/karthick7204" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-xs font-medium text-white/60 hover:text-white transition-all">
+          GitHub <ArrowUpRight className="w-3 h-3" />
+        </a>
+        <a href="https://www.linkedin.com/in/a-karthick-raja/" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-xs font-medium text-white/60 hover:text-white transition-all">
           LinkedIn <ArrowUpRight className="w-3 h-3" />
         </a>
-        <a href="#" className="flex items-center gap-1 text-xs font-medium text-white/60 hover:text-white transition-all">
+        <a href="https://drive.google.com/file/d/1cjAuGr1ktIdoJdZy5iTU9iAazcuKXNg7/view?usp=drivesdk" target="_blank" rel="noreferrer" className="flex items-center gap-1 text-xs font-medium text-white/60 hover:text-white transition-all">
           Resume <ArrowUpRight className="w-3 h-3" />
         </a>
       </div>
