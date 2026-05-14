@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   description: "Product Designer & Fullstack Developer Portfolio",
 };
 
+import SmoothScroll from "./components/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,7 +34,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} font-sans antialiased bg-[#020202] text-white`}
       >
+        <SmoothScroll>
           {children}
+        </SmoothScroll>
       </body>
     </html>
   );
