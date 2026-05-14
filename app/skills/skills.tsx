@@ -93,7 +93,7 @@ export default function Skills() {
   });
 
   return (
-    <section ref={containerRef} className="relative bg-[#010101]" style={{ minHeight: `${categories.length * 60}vh` }}>
+    <section ref={containerRef} className="relative bg-[#010101]" style={{ minHeight: `${categories.length * 80}vh` }}>
       
       {/* Sticky UI Wrapper */}
       <div className="sticky top-0 h-screen flex flex-col justify-center items-center py-10 md:py-20">
@@ -104,7 +104,7 @@ export default function Skills() {
           </div>
 
           {/* IDE Container */}
-          <div className="w-full rounded-xl border border-white/10 bg-[#080808] overflow-hidden shadow-2xl flex flex-row h-[320px] md:h-[420px]">
+          <div className="w-full rounded-xl border border-white/10 bg-[#080808] overflow-hidden shadow-2xl flex flex-row h-[450px] md:h-[550px]">
             
             {/* Sidebar - Always on the left */}
             <div className="w-[80px] sm:w-48 md:w-64 border-r border-white/5 bg-[#050505] flex flex-col flex-none">
