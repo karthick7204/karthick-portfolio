@@ -21,7 +21,7 @@ const projects = [
     img: "/project2.png",
   },
   {
-    name: "Project1",
+    name: "Invest and Budget Planner",
     desc: "sample data coming from meta verse",
     tag: "#BackGround Agent",
     href: "https://github.com/karthick/project1",
