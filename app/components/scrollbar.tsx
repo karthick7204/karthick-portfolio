@@ -32,9 +32,9 @@ export default function GlowScrollbar() {
     trailRef,
     side,
   }: {
-    trackRef: React.RefObject<HTMLDivElement>;
-    dotRef: React.RefObject<HTMLDivElement>;
-    trailRef: React.RefObject<HTMLDivElement>;
+    trackRef: React.RefObject<HTMLDivElement | null>;
+    dotRef: React.RefObject<HTMLDivElement | null>;
+    trailRef: React.RefObject<HTMLDivElement | null>;
     side: "left" | "right";
   }) => (
     <div
