@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
@@ -30,7 +31,7 @@ const projects = [
   },
 ];
 
-function ProjectCard({ project }: { project: typeof projects[0] }) {
+function ProjectCard({ project, isLast }: { project: typeof projects[0]; isLast?: boolean }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -54,7 +55,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
           </div>
         </div>
 
-        <div className="relative w-full rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#080808] h-[300px] sm:h-[400px] md:h-[550px]">
+        <div className={`relative w-full rounded-xl md:rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#080808] h-[300px] sm:h-[400px] ${isLast ? 'md:h-[500px]' : 'md:h-[550px]'}`}>
           <Image src={project.img} alt={project.name} fill className="object-cover object-top hover:scale-105 transition-transform duration-1000" />
 
           {/* Bottom Overlay with Explanation and Link */}
@@ -75,6 +76,20 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 
           <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none z-10" />
         </div>
+
+        {isLast && (
+          <div className="w-full flex justify-center mt-6">
+            <a
+              href="https://github.com/karthick7204"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2.5 px-6 py-3 bg-white/10 hover:bg-white/20 transition-all duration-300 border border-white/10 rounded-full text-xs md:text-sm text-white font-bold tracking-widest uppercase hover:scale-105"
+            >
+              View All
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300 text-white/60 group-hover:text-white" />
+            </a>
+          </div>
+        )}
       </div>
     </motion.div>
   );
@@ -134,8 +149,8 @@ export default function ProjectList() {
         </div>
 
         <div className="flex flex-col" style={{ minHeight: `${projects.length * 100}vh` }}>
-          {projects.map((p) => (
-            <ProjectCard key={p.name} project={p} />
+          {projects.map((p, idx) => (
+            <ProjectCard key={p.name} project={p} isLast={idx === projects.length - 1} />
           ))}
         </div>
       </motion.section>
